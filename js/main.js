@@ -18,52 +18,47 @@ if (menuBtn && navLinks) {
   });
 }
 
-// ========== Form Handling (works with Formspree later) ==========
+// ========== Form Handling (Register + Contact) ==========
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
+    const popup = document.getElementById('successPopup');
+    const okBtn = document.getElementById('successOkBtn');
+
+    btn.textContent = 'Submitting...';
     btn.disabled = true;
 
-    // If you add a Formspree endpoint later, uncomment the fetch block
-    //------------------------------------------------------------
     try {
-      const response = await fetch(form.action, {
+      await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        mode: 'no-cors'
       });
-      if (response.ok) {
-        btn.textContent = 'Submitted ✓';
-        form.reset();
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }, 2500);
-      } else {
-        throw new Error('Network error');
-      }
+
+      // Success
+      form.reset();
+      popup.classList.add('show');
+
+      // When user clicks OK
+      okBtn.onclick = () => {
+        popup.classList.remove('show');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      };
+
     } catch (err) {
+      console.error(err);
       btn.textContent = 'Error – try again';
+      alert('Something went wrong. Please try again.');
+
       setTimeout(() => {
         btn.textContent = originalText;
         btn.disabled = false;
       }, 2500);
     }
-//---------------------------------------------------------------
-
-    // Temporary local success (remove after connecting Formspree)
-    setTimeout(() => {
-      btn.textContent = 'Submitted ✓';
-      form.reset();
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 2200);
-    }, 900);
   });
 });
 
@@ -86,11 +81,16 @@ document.querySelectorAll('.fade-up').forEach(el => {
   observer.observe(el);
 });
 
-// ========== Active Nav Link Highlight (extra safety) ==========
+// ========== Active Nav Link Highlight ==========
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
 document.querySelectorAll('.nav-links a').forEach(link => {
   const href = link.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+
+  if (
+    href === currentPage ||
+    (currentPage === '' && href === 'index.html')
+  ) {
     link.classList.add('active');
   }
 });
