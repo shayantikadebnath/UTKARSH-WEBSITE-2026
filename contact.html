@@ -19,24 +19,25 @@
     <nav class="wrap">
       <a href="index.html" class="brand">
         <img src="assets/utkarsh-logo.jpg" alt="Utkarsh seal">
-
         <div class="brand-text">
           <strong>U T K A R S H</strong>
           <span><b>Department of Management, Humanities and Social Sciences</span>
           <span>✦ NIT Agartala ✦</span>
         </div>
-
       </a>
+
       <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="events.html">Events</a>
         <a href="team.html">Team</a>
+        <a href="mentors.html">Mentors</a>
         <a href="gallery.html">Gallery</a>
         <a href="partners.html">Partners</a>
         <a href="updates.html">Updates</a>
         <a href="register.html" class="nav-cta">Register</a>
       </div>
+
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
     </nav>
   </header>
@@ -52,15 +53,23 @@
   <section>
     <div class="wrap">
       <div class="form-card">
-        <form id="contactForm" action="https://formspree.io/f/mrpzlger" method="POST">
+        <form id="contactForm"
+          action="https://script.google.com/macros/s/AKfycbxHH_BaLFAHa7vDaOVjzJjLJ5AcWHkLtbY93OjWZ33GNN4Amfc5ZlviyabW-A0DPrrS/exec"
+          method="POST">
+
+          <!-- Hidden field so script knows this is Contact form -->
+          <input type="hidden" name="formType" value="contact">
+
           <div class="form-group">
             <label for="name">Your Name *</label>
             <input type="text" id="name" name="name" required placeholder="Full name">
           </div>
+
           <div class="form-group">
             <label for="email">Email *</label>
             <input type="email" id="email" name="email" required placeholder="you@example.com">
           </div>
+
           <div class="form-group">
             <label for="subject">Subject *</label>
             <select id="subject" name="subject" required>
@@ -72,10 +81,12 @@
               <option value="Other">Other</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="message">Message *</label>
             <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
           </div>
+
           <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
             Send Message →
           </button>
@@ -83,8 +94,9 @@
 
         <div style="margin-top:36px; padding-top:28px; border-top:1px solid var(--line); text-align:center;">
           <p style="font-size:0.9rem; color:var(--ink-soft); margin-bottom:8px;">Or email us directly</p>
-          <a href="mailto:utkarsh.mhss@nita.ac.in"
-            style="color:var(--navy-deep); font-weight:500;">utkarsh.mhss@nita.ac.in</a>
+          <a href="mailto:utkarsh.mhss@nita.ac.in" style="color:var(--navy-deep); font-weight:500;">
+            utkarsh.mhss@nita.ac.in
+          </a>
         </div>
       </div>
     </div>
@@ -106,6 +118,7 @@
         </div>
         <div class="foot-col">
           <h4>Get Involved</h4>
+          <a href="mentors.html">Mentors</a>
           <a href="register.html">Register</a>
           <a href="partners.html">Partners</a>
           <a href="updates.html">Updates</a>
@@ -113,11 +126,21 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© 2026 sayantika_𖹭 · NIT Agartala</span>
+        <span>© Sayantika Debnath-25PMHS018 · MBA(2025-2027) · MHSS · NIT Agartala</span>
         <span>Illuminating Leadership</span>
       </div>
     </div>
   </footer>
+
+  <!-- Success Popup -->
+  <div class="success-overlay" id="successPopup">
+    <div class="success-modal">
+      <div class="success-icon">🕊️..</div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for contacting UTKARSH.<br>We’ll get back to you soon.</p>
+      <button class="btn btn-primary" id="successOkBtn">OK</button>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
