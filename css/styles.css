@@ -1362,7 +1362,7 @@ footer {
 
 .member-email {
   display: inline-block;
-  font-size: 0.82rem;
+  font-size: 0.65rem;
   color: var(--navy);
   transition: color 0.2s ease;
   margin-top: auto;
