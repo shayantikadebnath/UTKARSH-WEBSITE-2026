@@ -1502,3 +1502,54 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========== HERO BACKGROUND IMAGE ========== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--cream);
+  padding: 96px 0 110px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Dark overlay so text stays readable */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+      rgba(16, 13, 58, 0.80) 0%,
+      rgba(24, 18, 87, 0.30) 55%,
+      rgba(38, 10, 101, 0.8) 100%);
+  z-index: 1;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Easy color controls */
+.hero .eyebrow.on-dark {
+  color: var(--gold);
+}
+
+.hero h1 {
+  color: var(--cream);
+}
+
+.hero h1 em {
+  color: var(--gold);
+}
+
+.hero p.lede {
+  color: rgba(250, 246, 236, 0.82);
+}
